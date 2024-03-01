@@ -1,0 +1,27 @@
+{
+  "name": "react_word_counter",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel --open",
+    "build": "rm -rf dist && parcel build --no-source-maps"
+  },
+  "keywords": [],
+  "author": "Armando Endzelis",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "parcel": "^2.11.0",
+    "prettier": "^3.2.4",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.8"
+  }
+}
