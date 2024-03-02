@@ -1,4 +1,5 @@
 /**
+ * Clear the text of any character other than a letter
  * 
  * @param {string} text 
  * @returns {string}
