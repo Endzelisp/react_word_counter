@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-function Textarea() {
-  return <Text />
+function Textarea({text, setText}) {
+	function changeHandler(e) {
+		setText(e.target.value)
+	}
+
+  return <Text setText={setText} value={text} onChange={changeHandler}/>
 }
 
 const Text = styled.textarea`
