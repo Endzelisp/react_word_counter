@@ -1,34 +1,29 @@
 /**
- * Clear the text of any character other than a letter
+ * Receives a string and cleans it of any different
+ * characters other than letters and splits it into
+ * individual words within an array
  * 
- * @param {string} text 
- * @returns {string}
+ * @param { string } text 
+ * @returns { [string] }
  */
-function stringWithoutSymbols(text) {
-  const justLettersRegex = /[a-záéíóúüñ\s\n\r]/;
-  return text
-    .split('')
-    .filter((letter) => letter.match(justLettersRegex))
-    .join('')
+export function stringToValidWords(text) {
+  const normalizedText = text.normalize().toLowerCase();
+  const arrayOfWords = normalizedText.split(' ');
+
+  // loop over the array of words
+  // split each word into an array of individual characters
+  // filter that array to match just valid characters
+  const cleanedText = arrayOfWords.map((word) => {
+    return word
+      .split('')
+      .filter((word) => word.match(/[a-záéíóúüñ]/))
+      .join('')
+  })
+
+  // Filter out any empty array
+  return cleanedText.filter((item) => item.length > 0)
 }
 
-/**
- * Remove line jumps and symbols from the text
- * 
- * @param { String } text 
- * @returns { String }
- */
-export function sanitizeText(text) {
-  const noLineJumpRegex = /[\t\r\n\.]/g;
-  if (typeof text === 'string' && text !== '') {
-    const normalizedText = text.normalize().toLocaleLowerCase();
-    const cleanedString = normalizedText.replace(noLineJumpRegex, ' ');
-    return cleanedString
-      .split(' ')
-      .filter(item => item !== '')
-      .map(stringWithoutSymbols)
-  }
-}
 
 /**
  * Count the number of times a word is present in an array
