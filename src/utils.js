@@ -24,7 +24,6 @@ export function stringToValidWords(text) {
   return cleanedText.filter((item) => item.length > 0)
 }
 
-
 /**
  * Count the number of times a word is present in an array
  * returning a bidimensional array with the word as key
@@ -34,18 +33,12 @@ export function stringToValidWords(text) {
  * @returns {[[string, number]]}
  */
 export function wordCounter(arrayOfWords) {
-  if (Array.isArray(arrayOfWords)) {
-    const countedWords = arrayOfWords.reduce((accumulator, current) => {
-      if (accumulator.has(current)) {
-        const count = accumulator.get(current)
-        accumulator.set(current, count + 1)
-        return accumulator
-      }
-      accumulator.set(current, 1)
+  return arrayOfWords.reduce((accumulator, current) => {
+    if (current in accumulator) {
+      accumulator[current] += 1;
       return accumulator
-  
-    }, new Map())
-    return Array.from(countedWords)
-  }
-  return []
+    }
+    accumulator[current] = 1;
+    return accumulator
+  }, {})
 }
