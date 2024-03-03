@@ -11,8 +11,18 @@ function WordCounterForm({ setWordsCounted }) {
   function submitHandler(e) {
     e.preventDefault();
     const cleanedText = stringToValidWords(text);
-    const wordsArray = wordCounter(cleanedText);
-    setWordsCounted(wordsArray);
+    const countedWords = wordCounter(cleanedText);
+    const wordsToArray = Object.entries(countedWords)
+    const sortedArrayOfWords = wordsToArray.sort((a, b) => b[1] - a[1])
+    const wordsLabeled = sortedArrayOfWords.map(([word, frequency]) => {
+      return {
+        label: word,
+        frequency,
+        id: crypto.randomUUID(),
+      }
+    })
+    setWordsCounted(wordsLabeled)
+    console.log(wordsLabeled)
   }
 
   function resetHandler() {
