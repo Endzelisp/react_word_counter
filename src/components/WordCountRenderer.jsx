@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-function WordCountRenderer({count, children}) {
+function WordCountRenderer({frequency, children}) {
   return (
-    <p><Count>{count}</Count>{children}</p>
+    <p><Count>{frequency}</Count>{children}</p>
   )
 }
 
