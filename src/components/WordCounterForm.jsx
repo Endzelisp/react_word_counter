@@ -2,18 +2,17 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Textarea from './Textarea';
 import ControlButton from './ControlButton';
-import { sanitizeText } from '../utils';
+import { stringToValidWords } from '../utils';
 import { wordCounter } from '../utils';
 
-function WordCounterForm() {
-
+function WordCounterForm({ setWordsCounted }) {
   const [text, setText] = useState('');
 
   function submitHandler(e) {
     e.preventDefault();
-    const sanitizedText = sanitizeText(text);
-    const wordsArray = wordCounter(sanitizedText);
-    console.log(wordsArray)
+    const cleanedText = stringToValidWords(text);
+    const wordsArray = wordCounter(cleanedText);
+    setWordsCounted(wordsArray);
   }
 
   function resetHandler() {
